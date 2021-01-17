@@ -61,6 +61,7 @@
                                     <div class="form-group col-sm-4">
                                         <label for="ccyear">التخصص</label>
                                         <select class="form-control " id="ccyear" name="input_depa">
+                                        <option value="">اختار القسم</option>
                                             @foreach($depart as $depart)
                                             <option value="{{$depart->id}}">{{$depart->department}}</option>
                                             @endforeach

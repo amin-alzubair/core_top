@@ -22,7 +22,7 @@ class StoreTicket extends FormRequest
             'price'=>'required|min:2',
             'input_depa'=>'required',
             'input_unev'=>'required',
-            'note'=>'required',
+            'note'=>'nullable',
         ];
     }
     public function messages(){

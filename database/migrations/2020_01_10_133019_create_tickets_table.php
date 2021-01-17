@@ -20,7 +20,7 @@ class CreateTicketsTable extends Migration
             $table->unsignedBigInteger('department_id')->reference('id')->on('departments');
             $table->unsignedBigInteger('gender_id')->reference('id')->on('genders');
             $table->double('bound');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
