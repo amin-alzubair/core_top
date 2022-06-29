@@ -63,7 +63,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                        <span class="hidden-md-down">{{auth::user()->name}}</span>
+                        <span class="hidden-md-down">{{auth()->user()->name}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!--<a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="tag tag-default">42</span></a>-->
