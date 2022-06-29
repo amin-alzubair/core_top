@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 
 Route::get('/index',function(){
     return view('index');
-});
+})->name('home.index');
 
 Auth::routes(['register' => false]);
 
