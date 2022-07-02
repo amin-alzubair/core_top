@@ -16,7 +16,7 @@
     <meta name="author" content="Lukasz Holeczek">
     <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
-    <title>Welcome In Home Page</title>
+    <title>@yield('title')</title>
     <!-- Icons -->
     <script src="js/app.js"></script>
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 
                 <li class="nav-item p-x-1">
                 
-                    <a class="nav-link" href="/home">
+                    <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="fa fa-home"></i>
                     الرئيسية
                      </a>
@@ -88,18 +88,14 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> لوحة تحكم <span class="tag tag-info">جدید</span></a>
+                    <a class="nav-link" href="{{route('dashboard')}}"><i class="icon-speedometer"></i> لوحة تحكم <span class="tag tag-info">جدید</span></a>
                 </li>
 
-                
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> التذاكر </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('show.ticket')}}"><i class="icon-eye"></i>عرض التذاكر</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('create.ticket')}}"><i class="icon-plus"></i>اضافة تذكرة</a>
+                            <a class="nav-link" href="{{route('ticket.create')}}"><i class="icon-plus"></i>اضافة تذكرة</a>
                         </li>
                     </ul>
                 </li>
@@ -124,16 +120,6 @@
                     </ul>
                 </li>
                 <!--  department -->
-
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle"><i class="icon-puzzle"></i> الارادات </a>
-                    <ul class="nav-dropdown-items">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('revenue.create')}}"><i class="icon-plus"></i> اضافة اراد</a>
-                        </li>
-                    </ul>
-                </li>
-                <!--  revenue-->
 
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> المنصرافات </a>

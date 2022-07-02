@@ -22,7 +22,7 @@ class HomeController extends Controller
         $ticket=\App\Ticket::all();
         $universty=\App\Universty::all();
         $department=\App\Department::all();
-        $employee=\App\Employee::all();
+        $employee=\App\User::all();
         return view('home',compact('ticket','universty','department','employee'));
     }
 }

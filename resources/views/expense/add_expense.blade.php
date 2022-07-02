@@ -7,7 +7,7 @@
     {{session('message')}}
     @endif
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-12 col-md-6">
 
         <div class="card">
         <div class="card-header">
@@ -45,7 +45,7 @@
             <label for="bound"> اسم المستخدم</label>
             <select name="employee_id" id="" class="form-control">
                 @foreach($employees as $employee)
-                <option value="{{$employee->id}}">{{$employee->employee_name}}</option>
+                <option value="{{$employee->id}}">{{$employee->name}}</option>
                 
                 @endforeach
                 
@@ -80,7 +80,7 @@
     </div>
 
 
-<div class="col-sm-8">
+<div class="col-sm-12 col-md-6">
     <div class="card">
         <div class="card-header">
         <i class="fa fa-align-justify"></i>
@@ -114,7 +114,7 @@
             <tr>
             <td>{{$expense->point}}</td>
             <td>{{$expense->price}}</td>
-            <td>{{$expense->employee->employee_name}}</td>
+            <td>{{$expense->employee->name}}</td>
             <td>{{$expense->created_at}}</td>
             <td>{{$expense->note}}</td>
             

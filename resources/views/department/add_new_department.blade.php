@@ -3,7 +3,7 @@
  <div class="container-fluid">
      <div class="animate fadeIn">
          <div class="row">
-             <div class="col-sm-6">
+             <div class="col-sm-8 col-md-12">
                  <div class="card">
                      <div class="card-header">
                          <i class="icon-plus"></i>
@@ -13,7 +13,7 @@
                      <div class="card-block">
                          <form action="/post_department" method="post">
                          @csrf
-                             <div class="form-group"><label for="depart">اسم التخصص</label>
+                             <div class="form-group"><label for="depart">اسم القسم</label>
                              <input type="text" name="department" id="" class="form-control @error('department') is-invalid @enderror" >
                             
                             @error('department')
@@ -27,34 +27,49 @@
                      </div>
                  </div>
              </div>
-             <div class="col-sm-4">
-                 <div class="card">
-                     <div class="card-header">
-                         <i class="fa fa-align-justify"></i>
-                         <strong >التخصصات</strong>
-                     </div>
-                     <div class="card-block">
-                         <table class="table">
-                             <thead>
-                             <tr>
-                             <th class="btn btn-success">اسم التخصص</th>
-                             </tr>
-                             </thead>
-                             <tbody>
-                             @foreach($departments as $department)
-                                <tr>
-                                <th>{{$department->department}}</th>
-                                </tr>
-                             @endforeach
-                             </tbody>
-                         </table>
-                         {{$departments->links()}}
-                     </div>
-                 </div>
-             </div>
+             
          </div>
          
+         <div  class="row">
+        <div class="col-sm-8 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                    <i class="fa fa-align-justify"></i> 
+                        <strong>  الاقسام المتوفرة </strong>
+                    </div>
+                    <div class="card-block">
+                 <table class="table">
+                     <thead>
+                         <tr>
+                             <th>#</th>
+                             <th> القسم</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                        @foreach($departments as $department)
+                        
+                        <tr>
+                        <th>{{$department->id}}</th>
+                        <th>{{$department->department}}</th>
+                        
+                        </tr>
+                        
+                        @endforeach
+                     </tbody>
+                 </table>
+                 
+                    </div>
+                </div>
+                    <ul class="pagination">
+                        <li> {{$departments->links()}}</li>
+                        
+                 </ul>
+            </div>
+        
 
+
+
+</div>
 
 
 

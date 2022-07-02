@@ -9,7 +9,7 @@
         @endif
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-8 col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <i class="icon-plus"></i>
@@ -36,7 +36,9 @@
                     </div>
                 </div>
             </div><!--end col-->
-            <div class="col-sm-6">
+        </div>
+<div  class="row">
+        <div class="col-sm-8 col-md-12">
                 <div class="card">
                     <div class="card-header">
                     <i class="fa fa-align-justify"></i> 
@@ -70,13 +72,11 @@
                         
                  </ul>
             </div>
-        </div>
-
-       
         
 
 
 
+</div>
 
         </div>
     </div>

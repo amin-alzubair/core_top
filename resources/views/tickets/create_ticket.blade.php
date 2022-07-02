@@ -10,42 +10,35 @@
 @endif
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-8  col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <strong>اضافة</strong>
                                 <small class="btn btn-danger btn-sm">تذكرة</small>
                             </div>
                             <div class="card-block">
-                                <form action="{{route('store.ticket')}}" method="post">
+                                <form action="{{route('ticket.store')}}" method="post">
 
                                 @csrf
-
-
                                 <div class="row">
+                                <div class="col-sm-3">
 
-                                    <div class="col-sm-12">
-
-                                        <div class="form-group">
-                                            <label for="name">اسم الطالب</label>
-                                            <input 
-                                            type         ="text" 
-                                            name          ="student_name" 
-                                            class         ="form-control" 
-                                            id           ="name"
-                                            placeholder  ="اسم الطالب">
-                                            
-                                        </div>
-
-
+                                    <div class="form-group">
+                                        <label for="name">اسم الطالب</label>
+                                        <input 
+                                        type         ="text" 
+                                        name          ="student_name" 
+                                        class         ="form-control" 
+                                        id           ="name"
+                                        placeholder  ="اسم الطالب"
+                                        value="{{old('student_name')}}">
+                                        
                                     </div>
 
-                                </div>
-                                <!--/row-->
 
-                                <div class="row">
+                             </div>
 
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-3">
                                         <label for="ccmonth">الجامعة</label>
                                         <select   class="form-control" id="ccmonth" name="input_unev">
                                         <option value="">اختار الجامعة</option>
@@ -58,7 +51,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-sm-4">
+                                    <div class="form-group col-sm-3">
                                         <label for="ccyear">التخصص</label>
                                         <select class="form-control " id="ccyear" name="input_depa">
                                         <option value="">اختار القسم</option>
@@ -70,7 +63,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
 
                                         <div class="form-group">
                                             <label for="cvv">الملبغ المدفع</label>
@@ -79,7 +72,8 @@
                                             class         ="form-control @error('price') is-invalid @enderror" 
                                             name          ="price" 
                                             id            ="cvv" 
-                                            placeholder   ="123">
+                                            placeholder   ="123"
+                                            value="{{old('price')}}">
                                         </div>
 
                                     </div>
@@ -108,17 +102,8 @@
                             <!--/row-->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="form-group">
-                                     <label for="info">ملاحظات</label>
-                                     <textarea name="note" id="" cols="10" rows="10" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/row-->
-                            <div class="row">
-                                <div class="col-sm-8">
                                 <div class="form-group">
-                                 <button class="btn btn-success btn-xl">اضافة</button>
+                                 <button class="btn btn-success btn-xl form-control">اضافة</button>
                                 </div>
                                 </div>
                                 </div>
@@ -129,7 +114,44 @@
                             </div>    
                  </div>
                 </div>               
-                                
-           </div>
+                </div>
+                
+  <div class="row">
+    <div class="col-sm-8 col-lg-12  d-flex justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> التذاكر
+            </div>
+            <div class="card-block">
+                <table class="table table-striped">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th>اسم الطالب</th>
+                            <th>تاريخ التذكرة</th>
+                            <th>الجامعة</th>
+                            <th>التخصص</th>
+                            <th>القيمة المدفوعة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($tickets as $ticket)
+                        <tr>
+                        <th>{{$ticket->student_name}}</th>
+                        <th>{{$ticket->created_at->format('Y-M-D-d')}}</th>
+                        <th>{{$ticket->universty->university}}</th>
+                        <th>{{$ticket->department->department}}</th>
+                        <th>{{$ticket->bound.'ج'}}</th>
+                        
+                        
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    
+                    <li>{{$tickets->links()}}</li>
+                </ul>
+         </div>
+        </div>
 </div>
 @endsection

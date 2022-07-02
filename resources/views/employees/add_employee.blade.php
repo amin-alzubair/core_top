@@ -18,10 +18,46 @@
            <form action="{{route('employee.store')}}" method="post">
                  @csrf
            <div class="form-group">
-               <label for="اسم الموظف"></label>
-               <input type="text" name="employee_name" id="" class="form-control @error('employee_name') is-invalid @enderror">
+               <label for="name">اسم الموظف</label>
+               <input type="text" name="name" id="" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
            </div>
-           @error('employee_name')
+           @error('name')
+               <div class="alert alert-danger invalid-feedback" role="alert">
+
+                {{$message}}
+               
+               </div>
+               @enderror
+
+               <div class="form-group">
+               <label for="email">البريد  الالكتروني</label>
+               <input type="email" name="email" value="{{old('email')}}" id="" class="form-control @error('email') is-invalid @enderror">
+           </div>
+           @error('email')
+               <div class="alert alert-danger invalid-feedback" role="alert">
+
+                {{$message}}
+               
+               </div>
+               @enderror
+
+               <div class="form-group">
+               <label for="password">كلمة المرور</label>
+               <input type="password" name="password" id="" class="form-control @error('password') is-invalid @enderror">
+           </div>
+           @error('password')
+               <div class="alert alert-danger invalid-feedback" role="alert">
+
+                {{$message}}
+               
+               </div>
+               @enderror
+
+               <div class="form-group">
+               <label for="password_confirm">تاكيد كلمة المرور </label>
+               <input type="password" name="password_confirmation" id="" class="form-control @error('password_confirm') is-invalid @enderror">
+           </div>
+           @error('password_confirm')
                <div class="alert alert-danger invalid-feedback" role="alert">
 
                 {{$message}}
@@ -52,6 +88,7 @@
         <thead>
         <tr>
         <th>اسم الموظف</th>
+        <th>بريد الموظف</th>
         <th>العملية</th>
         
         </tr>
@@ -59,10 +96,11 @@
         <tbody>
         @foreach($employee as $employee)
         <tr>
-        <th>{{$employee->employee_name}}</th>
+        <th>{{$employee->name}}</th>
+        <th>{{$employee->email}}</th>
          <th>
 
-         <a href="{{route('employee.destroy',$employee->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+         @if(auth()->user()->id != $employee->id)<a href="{{route('employee.destroy',$employee->id)}}" class="btn btn-danger" ><i class="fa fa-trash"></i></a>@endif
          
          </th>
         

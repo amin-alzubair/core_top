@@ -14,13 +14,20 @@ class EmployeeRequest extends FormRequest
     public function messages(){
 
         return [
-            'employee_name.required'=>'اسم الموظف مطلوب'
+            'name.required'=>'اسم الموظف مطلوب',
+            'email.required'=>'ادخل البريد الاكتروني',
+            'email.emai'=>'ادخل البريد الاكتروني  صحيحا',
+            'email.unique'=>' البريد الاكتروني موجود مسبقا  ',
+            'password.required'=>'ادخل كلمة المرور',
+            'password.confirmed'=>'كلمة المرور غير مطابقة',
         ];
     }
     public function rules()
     {
         return [
-            'employee_name'=>'required',
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:8|confirmed',
         ];
     }
 }

@@ -21,20 +21,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class,'index'])->name('dashboard');
 
-Route::get('/index',function(){
-    return view('index');
-})->name('home.index');
 
 Auth::routes(['register' => false]);
 
 
 Route::group(['middleware'=>['auth']],function(){
     //ticket routes
- Route::get('/create_ticket',[TicketController::class,'create'])->name('create.ticket');
- Route::get('/show_ticket',[TicketController::class,'index'])->name('show.ticket');
- Route::post('/add_ticket',[TicketController::class,'store'])->name('store.ticket');
+ Route::get('/create_ticket',[TicketController::class,'create'])->name('ticket.create');
+ Route::post('/add_ticket',[TicketController::class,'store'])->name('ticket.store');
 
  //university routes
  Route::get('/add_university',[UniverstyController::class,'create'])->name('universty.create');
@@ -44,11 +40,6 @@ Route::group(['middleware'=>['auth']],function(){
  //department routes
  Route::get('/add_department',[DepartmentController::class,'create'])->name('department.create');
  Route::post('/post_department',[DepartmentController::class,'store'])->name('department.store');
-
- //revenue routes
-
- Route::get('/add_revenue',[RevenueController::class,'create'])->name('revenue.create');
- Route::post('/post_revenue',[RevenueController::class,'store'])->name('revenue.store');
 
  //expense routes
 

@@ -11,19 +11,13 @@ use App\Universty;
 use App\Department;
 class TicketController extends Controller
 {
-    //dispaly all tickets
-    public function index()
-    {
-        $tickets=Ticket::orderBy('created_at','desc')->paginate(5);
-        return view('tickets.tickets_show',compact('tickets'));
-    }
-
-    //create tickets
+   
     public function create()
     {
         $universty=Universty::all();
         $depart=Department::all();
-        return view('tickets.create_ticket',compact('universty','depart'));
+        $tickets=Ticket::orderBy('created_at','desc')->paginate(5);
+        return view('tickets.create_ticket',compact('universty','depart','tickets'));
     }
 
    //store new tickets

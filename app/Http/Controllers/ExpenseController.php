@@ -6,6 +6,7 @@ use App\Expense;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExpenseRequest;
 use App\Employee;
+use App\User;
 
 class ExpenseController extends Controller
 {
@@ -14,7 +15,7 @@ class ExpenseController extends Controller
     public function create()
     {
         $expenses=Expense::all();
-        $employees=Employee::select('id','employee_name')->get();
+        $employees=User::select('id','name')->get();
         return view('expense.add_expense',compact('employees','expenses'));
     }
     //store new expense
