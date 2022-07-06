@@ -12,9 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "realrashid/sweet-alert": "^3.1"
-    },
-    "require-dev": {
+        "realrashid/sweet-alert": "^3.1",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.4",
         "laravel/ui": "^3.0",
@@ -22,6 +20,7 @@
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.0"
     },
+    
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
