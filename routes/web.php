@@ -4,7 +4,6 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UniverstyController;
 use Illuminate\Support\Facades\Route;
