@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeRequest;
+use App\Mail\WelcomeNewEmployee;
 use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class EmployeeController extends Controller
 {
@@ -19,7 +22,11 @@ class EmployeeController extends Controller
     //store new employee
     public function store(EmployeeRequest $request)
     {
-       User::create($request->all());
+        $data = $request->validated();
+        $data['password']=Hash::make($data['password']);
+       $user = User::create($data);
+
+       Mail::to($user->email)->queue(new WelcomeNewEmployee());
 
        return back()->with('toast_success','تمت اضافة موظفة بنجاح');
     }
@@ -29,6 +36,14 @@ class EmployeeController extends Controller
     {
         $employee->delete();
 
-        return back();
+        return back()->with('toast_success','تم حذف الموظف بنجاح');
+    }
+
+    public function setAdmin(){
+        User::where('id',request('user_id'))->update([
+            'isAdmin'=>request('isAdmin')
+        ]);
+
+        return response()->json(['message'=>'تم تغير حالة المستخدم']);
     }
 }

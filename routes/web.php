@@ -48,8 +48,9 @@ Route::group(['middleware'=>['auth']],function(){
 
  //employes  routes
 
- Route::get('/add_employee',[EmployeeController::class,'create'])->name('employee.create');
+ Route::get('/add_employee',[EmployeeController::class,'create'])->name('employee.create')->middleware('isAdmin');
  Route::get('/delete_employee/{employee}',[EmployeeController::class,'destroy'])->name('employee.destroy');
  Route::post('/post_employee',[EmployeeController::class,'store'])->name('employee.store');
+ Route::post('/set_admin',[EmployeeController::class,'setAdmin'])->name('employee.setAdmin');
  
 });

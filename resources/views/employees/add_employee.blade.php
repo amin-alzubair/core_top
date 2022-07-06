@@ -8,7 +8,7 @@
 
 @endif
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4 md-col-8">
             <div class="card">
             <div class="card-header">
              <span class="btn btn-primary"><i class="icon-plus"></i></span>
@@ -76,7 +76,7 @@
          </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-8 col-md-8">
         <div class="card">
         <div class="card-header">
         <i class="fa fa-algin-justify"></i>
@@ -90,6 +90,7 @@
         <th>اسم الموظف</th>
         <th>بريد الموظف</th>
         <th>العملية</th>
+        <th>Is-Admin</th>
         
         </tr>
         </thead>
@@ -98,11 +99,12 @@
         <tr>
         <th>{{$employee->name}}</th>
         <th>{{$employee->email}}</th>
-         <th>
-
-         @if(auth()->user()->id != $employee->id)<a href="{{route('employee.destroy',$employee->id)}}" class="btn btn-danger" ><i class="fa fa-trash"></i></a>@endif
-         
-         </th>
+        <th>@if(auth()->user()->id != $employee->id)<a href="{{route('employee.destroy',$employee->id)}}" class="btn btn-danger" ><i class="fa fa-trash"></i></a>@endif</th>
+        <th>
+            <form >
+               <input type="checkbox" data-id="{{ $employee->id }}" name="isAdmin" placeholder="is-Admin" class="js-switch" {{ $employee->isAdmin == 1 ? 'checked' : '' }}>
+            </form>
+        </th>
         
         </tr>
         
@@ -134,5 +136,34 @@
 </div>
 
 </div>
-
+<script>
+    
+let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+elems.forEach(function(html) {
+  let switchery = new Switchery(html,  { size: 'small' });
+});
+$(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }}),
+  $('.js-switch').change(function(){
+      let isAdmin = $(this).prop('checked')===true ? 1 :0;
+      let userId = $(this).data('id');
+      let token = "{{csrf_token()}}"
+      $.ajax({
+          type:'post',
+          dataType: 'json',
+          url: "/set_admin",
+          data: {'isAdmin':isAdmin,'user_id':userId,_token:token},
+          success:function(data){
+              toastr.options.closeButton = true;
+              toastr.options.closeMethod = 'fadeOut';
+              toastr.options.closeDuration = 100;
+              toastr.success(data.message);
+          }
+      });
+  });
+});
+</script>
 @endsection
