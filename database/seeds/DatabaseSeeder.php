@@ -14,10 +14,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call([
             UsersTableSeeder::class,
-        //factory(Ticket::class,10)->create();
-        UniverstiesTableSeeder::class,
-        DepartmentTableSeeder::class,
-        GendersTableSeeder::class,
         ]);
     }
 }

@@ -16,11 +16,9 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('student_name');
-            $table->unsignedBigInteger('university_id')->reference('id')->on('universties');
-            $table->unsignedBigInteger('department_id')->reference('id')->on('departments');
-            $table->unsignedBigInteger('gender_id')->reference('id')->on('genders');
-            $table->double('bound');
-            $table->string('note')->nullable();
+            $table->string('student_phone')->nullable();
+            $table->unsignedBigInteger('plan_id')->reference("id")->on('plans');
+            $table->boolean('stauts')->default(false);
             $table->timestamps();
         });
     }

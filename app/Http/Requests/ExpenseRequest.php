@@ -11,22 +11,26 @@ class ExpenseRequest extends FormRequest
         return true;
     }
 
-    
+
     public function rules()
     {
         return [
-            'point'=>'required',
-            'price'=>'required',
+            'point' => 'required',
+            'price' => 'required',
         ];
     }
-    public function messages(){
+    public function messages()
+    {
         return [
-            'point.required'=>'عزرا يجب ان لا يكون البند فارغا '
+            'point.required' => 'عزرا يجب ان لا يكون البند فارغا ',
+            'price.required' => 'ادخل المبلغ '
         ];
     }
-    public function attributes(){
+    public function attributes()
+    {
         return [
-            'point'=>'البند'
+            'point' => 'البند',
+            'price' => 'المبلغ'
         ];
     }
 }

@@ -16,13 +16,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    //hom page 
+    //hom page
     public function index()
     {
-        $ticket=\App\Ticket::all();
-        $universty=\App\Universty::all();
-        $department=\App\Department::all();
-        $employee=\App\User::all();
-        return view('home',compact('ticket','universty','department','employee'));
+        $ticket = \App\Ticket::all();
+        $employee = \App\User::all();
+        return view('home', compact('ticket', 'employee'));
     }
 }

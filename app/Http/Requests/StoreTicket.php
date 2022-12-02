@@ -6,23 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTicket extends FormRequest
 {
-    
+
     public function authorize()
     {
         return true;
     }
 
-    
+
     public function rules()
     {
         return [
             'student_name'=>'required|min:4|string',
-            'gender'=>'required',
-            'note'=>'',
-            'price'=>'required|min:2',
-            'input_depa'=>'required',
-            'input_unev'=>'required',
-            'note'=>'nullable',
+            'plan'=>'required',
+            'student_phone'=>'',
         ];
     }
     public function messages(){

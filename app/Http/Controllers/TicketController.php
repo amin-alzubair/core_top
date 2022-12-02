@@ -7,30 +7,41 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreTicket;
 use Illuminate\Foundation\Http\FormRequest;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Universty;
-use App\Department;
+use App\Plan;
+
 class TicketController extends Controller
 {
-   
+
     public function create()
     {
-        $universty=Universty::all();
-        $depart=Department::all();
-        $tickets=Ticket::orderBy('created_at','desc')->paginate(5);
-        return view('tickets.create_ticket',compact('universty','depart','tickets'));
+        $tickets = Ticket::orderBy('stauts', 'desc')->paginate(5);
+        $plans = Plan::select('id', 'plan_name', 'price')->get();
+        return view('tickets.create_ticket', compact('tickets', 'plans'));
     }
 
-   //store new tickets
+    public function checkout(Ticket $ticket)
+    {
+        return view('tickets.ticket_checkout', compact('ticket'));
+    }
+
+    //store new tickets
     public function store(StoreTicket $request)
     {
-        Ticket::create([
-            'student_name'  =>$request->student_name,
-            'university_id'  =>$request->input_unev,
-            'department_id' =>$request->input_depa,
-            'gender_id'     =>$request->gender,
-            'bound'         =>$request->price,
-            'note'          =>$request->note,
+        //dd($request->all());
+        $ticket = Ticket::create([
+            'student_name'  => $request->student_name,
+            'student_phone'  => $request->student_phone,
+            'plan_id'        => $request->plan
         ]);
-        return back()->with('toast_success',' تمت اضافة تذكرة جديدة');
+        return redirect(route('ticket.checkout', $ticket));
+    }
+
+    public function approved(Ticket $ticket)
+    {
+        $ticket->update([
+            'stauts' => 1
+        ]);
+
+        return back();
     }
 }

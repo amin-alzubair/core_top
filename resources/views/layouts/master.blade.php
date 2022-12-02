@@ -5,7 +5,7 @@
  * Copyright (c) 2016 creativeLabs Łukasz Holeczek
  * @license MIT
  -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="IR-fa" dir="rtl">
 
 <head>
@@ -18,72 +18,59 @@
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
     <title>@yield('title')</title>
     <!-- Icons -->
-    <script src="js/app.js"></script>
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
-    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <script src="{{asset('js/app.js')}}"></script>
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/simple-line-icons.css')}}" rel="stylesheet">
     <!-- Main styles for this application -->
-    <link href="dest/style.css" rel="stylesheet">
-    
+    <link href="{{asset('dest/style.css')}}" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
-<!-- BODY options, add following classes to body to change options
-		1. 'compact-nav'     	  - Switch sidebar to minified version (width 50px)
-		2. 'sidebar-nav'		  - Navigation on the left
-			2.1. 'sidebar-off-canvas'	- Off-Canvas
-				2.1.1 'sidebar-off-canvas-push'	- Off-Canvas which move content
-				2.1.2 'sidebar-off-canvas-with-shadow'	- Add shadow to body elements
-		3. 'fixed-nav'			  - Fixed navigation
-		4. 'navbar-fixed'		  - Fixed navbar
-	-->
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
-@auth
+    @auth
     <header class="navbar">
         <div class="container-fluid">
             <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
             <a class="navbar-brand" href="#"></a>
-            
+
             <ul class="nav navbar-nav hidden-md-down">
                 <li class="nav-item">
                     <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>
                 </li>
 
                 <li class="nav-item p-x-1">
-                
+
                     <a class="nav-link" href="{{route('dashboard')}}">
-                    <i class="fa fa-home"></i>
-                    الرئيسية
-                     </a>
+                        <i class="fa fa-home"></i>
+                        الرئيسية
+                    </a>
                 </li>
-                
+
             </ul>
             <ul class="nav navbar-nav pull-left hidden-md-down">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
                         <span class="hidden-md-down">{{auth()->user()->name}}</span>
+                        <img src="{{asset('img/avatars/6.jpg')}}" class="img-avatar" alt="admin@bootstrapmaster.com">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!--<a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="tag tag-default">42</span></a>-->
                         <div class="divider"></div>
-                        <a class="dropdown-item" href="{{route('logout')}}"
-                        
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
-                        
-                        ><i class="fa fa-lock"></i> خروج</a>
+                        <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i class="fa fa-lock"></i> خروج</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                       </form>
+                            @csrf
+                        </form>
                     </div>
                 </li>
 
             </ul>
-            
+
         </div>
     </header>
     <div class="sidebar">
@@ -94,35 +81,14 @@
                 </li>
 
                 <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> التذاكر </a>
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> الاشتراكات </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('ticket.create')}}"><i class="icon-plus"></i>اضافة تذكرة</a>
+                            <a class="nav-link" href="{{route('ticket.create')}}"><i class="icon-plus"></i> اشتراك جديد</a>
                         </li>
                     </ul>
                 </li>
                 <!--  tickets -->
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" ><i class="icon-puzzle"></i> الجامعات </a>
-                    <ul class="nav-dropdown-items">
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('universty.create')}}"><i class="icon-plus"></i>اضافة جامعة</a>
-                        </li>
-                    </ul>
-                </li>
-                <!--  university -->
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link nav-dropdown-toggle" ><i class="icon-puzzle"></i> الاقسام </a>
-                    <ul class="nav-dropdown-items">
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('department.create')}}"><i class="icon-plus"></i>اضافة قسم</a>
-                        </li>
-                    </ul>
-                </li>
-                <!--  department -->
-
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> المنصرافات </a>
                     <ul class="nav-dropdown-items">
@@ -143,7 +109,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 @endif
                 <!--  employees-->
 
@@ -151,49 +117,48 @@
             @endauth
         </nav>
     </div>
-    
+
     <!-- Main content -->
     <main class="main">
 
-       @yield('content')
+        @yield('content')
 
-@include('sweetalert::alert')
+        @include('sweetalert::alert')
 
-</main>
-<div class="container-fluid">
+    </main>
+    <div class="container-fluid">
 
-<div class="animated fadeIn">
-    
-        
-</div>
-
-</div>
-<footer class="footer">
-
-{{date('d-M-Y')}}
-</footer>
+        <div class="animated fadeIn">
 
 
-<!-- Bootstrap and necessary plugins -->
-<script src="js/libs/jquery.min.js"></script>
-<script src="js/libs/tether.min.js"></script>
-<script src="js/libs/bootstrap.min.js"></script>
-<script src="js/libs/pace.min.js"></script>
+        </div>
 
-<!-- Plugins and scripts required by all views -->
-<script src="js/libs/Chart.min.js"></script>
+    </div>
+    <footer class="footer">
 
-<!-- CoreUI main scripts -->
+        {{date('d-M-Y')}}
+    </footer>
 
-<script src="js/bb.js"></script>
 
-<!-- Plugins and scripts required by this views -->
-<!-- Custom scripts required by this view -->
-<script src="js/views/main.js"></script>
+    <!-- Bootstrap and necessary plugins -->
+    <script src="{{asset('js/libs/jquery.min.js')}}"></script>
+    <script src="{{asset('js/libs/tether.min.js')}}"></script>
+    <script src="{{asset('js/libs/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/libs/pace.min.js')}}"></script>
 
-<!-- Grunt watch plugin -->
-<!--<script src="//localhost:35729/livereload.js"></script>>-->
+    <!-- Plugins and scripts required by all views -->
+    <script src="{{asset('js/libs/Chart.min.js')}}"></script>
+
+    <!-- CoreUI main scripts -->
+
+    <script src="{{asset('js/bb.js')}}"></script>
+
+    <!-- Plugins and scripts required by this views -->
+    <!-- Custom scripts required by this view -->
+    <script src="{{asset('js/views/main.js')}}"></script>
+
+    <!-- Grunt watch plugin -->
+    <!--<script src="//localhost:35729/livereload.js"></script>>-->
 </body>
 
 </html>
-

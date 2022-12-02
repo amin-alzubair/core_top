@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->string('point');
             $table->double('price');
             $table->string('note')->nullable();
-            $table->unsignedBigInteger('employee_id')->reference('id')->on('employees');
+            $table->unsignedBigInteger('user_id')->reference('id')->on('users');
             $table->timestamps();
         });
     }

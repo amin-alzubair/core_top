@@ -30,15 +30,8 @@ Route::group(['middleware'=>['auth']],function(){
     //ticket routes
  Route::get('/create_ticket',[TicketController::class,'create'])->name('ticket.create');
  Route::post('/add_ticket',[TicketController::class,'store'])->name('ticket.store');
-
- //university routes
- Route::get('/add_university',[UniverstyController::class,'create'])->name('universty.create');
- Route::post('/post_university',[UniverstyController::class,'store'])->name('universty.store');
- 
-
- //department routes
- Route::get('/add_department',[DepartmentController::class,'create'])->name('department.create');
- Route::post('/post_department',[DepartmentController::class,'store'])->name('department.store');
+ Route::get('/checkout_ticket/{ticket}',[TicketController::class,'checkout'])->name('ticket.checkout');
+ Route::get('/approved/{ticket}',[TicketController::class,'approved'])->name('ticket.approved');
 
  //expense routes
 
@@ -51,5 +44,5 @@ Route::group(['middleware'=>['auth']],function(){
  Route::get('/delete_employee/{employee}',[EmployeeController::class,'destroy'])->name('employee.destroy');
  Route::post('/post_employee',[EmployeeController::class,'store'])->name('employee.store');
  Route::post('/set_admin',[EmployeeController::class,'setAdmin'])->name('employee.setAdmin');
- 
+
 });
