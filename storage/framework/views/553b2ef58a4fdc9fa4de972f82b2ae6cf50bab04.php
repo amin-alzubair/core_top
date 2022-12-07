@@ -1,21 +1,32 @@
-
-
 <?php $__env->startSection('content'); ?>
 
 <div class="container-fluid">
     <div class="card">
-        <div class="card-block">
-            <div class="flex"><strong>رقم البطاقة :<?php echo e($ticket->id); ?></strong></div>
-            <div>الاسم : <strong><?php echo e($ticket->student_name); ?></strong></div>
-            <div>رقم الهاتف: <strong><?php echo e($ticket->student_phone); ?></strong></div>
-            <div>نوع الاشتراك : <strong><?php echo e($ticket->plan->plan_name); ?></strong></div>
-            <div>تاريخ الاشتراك:<strong><?php echo e($ticket->created_at->format('Y-m-d')); ?></strong></div>
-            <div> القيمة المدفوعة:<strong>$<?php echo e($ticket->plan->price); ?></strong></div>
-            <div>حالة الاشتراك : <strong><?php echo e($ticket->stauts ? 'مفعل': 'غير مفعل'); ?></strong></div>
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block p-4">
+            <h4 class="card-title"><?php echo e($ticket->student_name); ?></h4>
+            <p class="card-text">
+            <div class="">
+                <b>رقم الهاتف</b>
+                <div><?php echo e($ticket->student_phone); ?></div>
+            </div>
+            <div class="">
+                <b> نوع الاشتراك</b>
+                <div><?php echo e($ticket->plan->plan_name); ?></div>
+            </div>
+            <div class="">
+                <b> تاريخ الانتهاء</b>
+                <div><?php echo e($ticket->exipred_at); ?></div>
+            </div>
+
+            </p>
+            <b>الحالة</b>
+            <?php if($ticket->stauts ===0): ?>
+            <a href="<?php echo e(route('ticket.approved',$ticket->id)); ?>" class="btn btn-primary">تفعيل</a>
+            <?php else: ?>
+            مفعل
+            <?php endif; ?>
         </div>
-        <?php if($ticket->stauts === 0): ?>
-        <div class="mr-10"><a href="<?php echo e(route('ticket.approved',$ticket->id)); ?>">تفعيل</a></div>
-        <?php endif; ?>
     </div>
 </div>
 

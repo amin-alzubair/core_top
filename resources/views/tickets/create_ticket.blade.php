@@ -104,7 +104,7 @@
                                     <th>{{$ticket->id}}</th>
                                     <th>{{$ticket->created_at}}</th>
                                     <th>{{$ticket->plan->plan_name}}</th>
-                                    <th><a href="{{route('ticket.checkout',$ticket->id)}}">{{$ticket->stauts}}</a></th>
+                                    <th><a href="{{route('ticket.stauts',$ticket->id)}}">{{$ticket->stauts}}</a></th>
 
 
                                 </tr>

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
 
 <div class="container-fluid">
@@ -104,7 +102,7 @@
                                     <th><?php echo e($ticket->id); ?></th>
                                     <th><?php echo e($ticket->created_at); ?></th>
                                     <th><?php echo e($ticket->plan->plan_name); ?></th>
-                                    <th><a href="<?php echo e(route('ticket.checkout',$ticket->id)); ?>"><?php echo e($ticket->stauts); ?></a></th>
+                                    <th><a href="<?php echo e(route('ticket.stauts',$ticket->id)); ?>"><?php echo e($ticket->stauts); ?></a></th>
 
 
                                 </tr>

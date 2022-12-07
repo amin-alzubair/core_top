@@ -19,6 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('student_phone')->nullable();
             $table->unsignedBigInteger('plan_id')->reference("id")->on('plans');
             $table->boolean('stauts')->default(false);
+            $table->timestamp('exipred_at')->nullable();
             $table->timestamps();
         });
     }

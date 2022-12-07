@@ -28,21 +28,22 @@ Auth::routes(['register' => false]);
 
 Route::group(['middleware'=>['auth']],function(){
     //ticket routes
- Route::get('/create_ticket',[TicketController::class,'create'])->name('ticket.create');
- Route::post('/add_ticket',[TicketController::class,'store'])->name('ticket.store');
- Route::get('/checkout_ticket/{ticket}',[TicketController::class,'checkout'])->name('ticket.checkout');
- Route::get('/approved/{ticket}',[TicketController::class,'approved'])->name('ticket.approved');
+ Route::get('/create-ticket',[TicketController::class,'create'])->name('ticket.create');
+ Route::post('/add-ticket',[TicketController::class,'store'])->name('ticket.store');
+ Route::get('/ticket-stauts/{ticket}',[TicketController::class,'stauts'])->name('ticket.stauts');
+ Route::get('/ticket-checkout/{ticket}',[TicketController::class,'checkout'])->name('ticket.checkout');
+ Route::put('/approved/{ticket}',[TicketController::class,'approved'])->name('ticket.approved');
 
  //expense routes
 
- Route::get('/add_expense',[ExpenseController::class,'create'])->name('expense.create');
- Route::post('/post_expense',[ExpenseController::class,'store'])->name('expense.store');
+ Route::get('/add-expense',[ExpenseController::class,'create'])->name('expense.create');
+ Route::post('/post-expense',[ExpenseController::class,'store'])->name('expense.store');
 
  //employes  routes
 
- Route::get('/add_employee',[EmployeeController::class,'create'])->name('employee.create')->middleware('isAdmin');
- Route::get('/delete_employee/{employee}',[EmployeeController::class,'destroy'])->name('employee.destroy');
- Route::post('/post_employee',[EmployeeController::class,'store'])->name('employee.store');
- Route::post('/set_admin',[EmployeeController::class,'setAdmin'])->name('employee.setAdmin');
+ Route::get('/add-employee',[EmployeeController::class,'create'])->name('employee.create')->middleware('isAdmin');
+ Route::get('/delete-employee/{employee}',[EmployeeController::class,'destroy'])->name('employee.destroy');
+ Route::post('/post-employee',[EmployeeController::class,'store'])->name('employee.store');
+ Route::post('/set-admin',[EmployeeController::class,'setAdmin'])->name('employee.setAdmin');
 
 });
