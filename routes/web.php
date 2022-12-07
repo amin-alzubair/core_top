@@ -33,6 +33,7 @@ Route::group(['middleware'=>['auth']],function(){
  Route::get('/ticket-stauts/{ticket}',[TicketController::class,'stauts'])->name('ticket.stauts');
  Route::get('/ticket-checkout/{ticket}',[TicketController::class,'checkout'])->name('ticket.checkout');
  Route::put('/approved/{ticket}',[TicketController::class,'approved'])->name('ticket.approved');
+ Route::get('/search',[TicketController::class,'search'])->name('search');
 
  //expense routes
 

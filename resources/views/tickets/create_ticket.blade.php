@@ -86,6 +86,12 @@
                     </div>
                     <div class="card-block">
                         <table class="table table-striped">
+
+                            <div class="input-group m-b-1">
+                                <span class="input-group-addon"><i class="icon-search"></i>
+                                </span>
+                                <input type="text" class="form-control" name="search" placeholder="ادخل رقم البطاقة" id="search">
+                            </div>
                             <thead class="bg-primary">
                                 <tr>
                                     <th>اسم الطالب</th>

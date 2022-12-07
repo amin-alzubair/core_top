@@ -50,8 +50,6 @@
                         الرئيسية
                     </a>
                 </li>
-
-            </ul>
             <ul class="nav navbar-nav pull-left hidden-md-down">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -68,9 +66,7 @@
                         </form>
                     </div>
                 </li>
-
             </ul>
-
         </div>
     </header>
     <div class="sidebar">
@@ -160,5 +156,27 @@
     <!-- Grunt watch plugin -->
     <!--<script src="//localhost:35729/livereload.js"></script>>-->
 </body>
+<script type="text/javascript">
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
+        $.ajax({
+            type: 'get',
+            url: "{{route('search')}}",
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'csrftoken': '{{ csrf_token() }}'
+        }
+    });
+</script>
 
 </html>
