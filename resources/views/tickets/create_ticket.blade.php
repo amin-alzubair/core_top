@@ -126,4 +126,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
+        $.ajax({
+            type: 'get',
+            url: "{{route('search')}}",
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'csrftoken': '{{ csrf_token() }}'
+        }
+    });
+</script>
 @endsection

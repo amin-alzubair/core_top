@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
+            \App\Http\Middleware\UserLastSeenAt::class
         ],
 
         'api' => [
@@ -63,7 +64,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'isAdmin'  =>\App\Http\Middleware\isAdminMiddleware::class
+        'isAdmin'  => \App\Http\Middleware\isAdminMiddleware::class,
+
     ];
 
     /**

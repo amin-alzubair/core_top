@@ -54,6 +54,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="hidden-md-down">{{auth()->user()->name}}</span>
+                        @if(auth()->user()->isOnline())
+                          <span class="alert alert-success">Online</span>
+                        @endif
                         <img src="{{asset('img/avatars/6.jpg')}}" class="img-avatar" alt="admin@bootstrapmaster.com">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -156,27 +159,4 @@
     <!-- Grunt watch plugin -->
     <!--<script src="//localhost:35729/livereload.js"></script>>-->
 </body>
-<script type="text/javascript">
-    $('#search').on('keyup', function() {
-        $value = $(this).val();
-        $.ajax({
-            type: 'get',
-            url: "{{route('search')}}",
-            data: {
-                'search': $value
-            },
-            success: function(data) {
-                $('tbody').html(data);
-            }
-        });
-    })
-</script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'csrftoken': '{{ csrf_token() }}'
-        }
-    });
-</script>
-
 </html>

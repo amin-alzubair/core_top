@@ -166,6 +166,7 @@ unset($__errorArgs, $__bag); ?>
                                         </form>
                                         <?php endif; ?>
                                     </th>
+                                    <th><?php echo e($employee->isOnline() ? 'Online' :'Offline'); ?></th>
 
                                 </tr>
 

@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
 
 trait AuthenticatesUsers
@@ -165,6 +166,7 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        Cache::forget('user-last-seen:'.Auth::user()->id);
         $this->guard()->logout();
 
         $request->session()->invalidate();

@@ -54,6 +54,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="hidden-md-down"><?php echo e(auth()->user()->name); ?></span>
+                        <?php if(auth()->user()->isOnline()): ?>
+                          <span class="alert alert-success">Online</span>
+                        <?php endif; ?>
                         <img src="<?php echo e(asset('img/avatars/6.jpg')); ?>" class="img-avatar" alt="admin@bootstrapmaster.com">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -157,28 +160,5 @@
     <!-- Grunt watch plugin -->
     <!--<script src="//localhost:35729/livereload.js"></script>>-->
 </body>
-<script type="text/javascript">
-    $('#search').on('keyup', function() {
-        $value = $(this).val();
-        $.ajax({
-            type: 'get',
-            url: "<?php echo e(route('search')); ?>",
-            data: {
-                'search': $value
-            },
-            success: function(data) {
-                $('tbody').html(data);
-            }
-        });
-    })
-</script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'csrftoken': '<?php echo e(csrf_token()); ?>'
-        }
-    });
-</script>
-
 </html>
 <?php /**PATH C:\xampp\htdocs\core_top\resources\views/layouts/master.blade.php ENDPATH**/ ?>

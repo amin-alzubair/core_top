@@ -107,6 +107,7 @@
                                         </form>
                                         @endif
                                     </th>
+                                    <th>{{$employee->isOnline() ? 'Online' :'Offline'}}</th>
 
                                 </tr>
 
