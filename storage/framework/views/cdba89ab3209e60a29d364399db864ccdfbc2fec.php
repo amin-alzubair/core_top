@@ -1,3 +1,4 @@
+<?php $__env->startSection('title','Ticket List'); ?>
 <?php $__env->startSection('content'); ?>
 
 <div class="container-fluid">
@@ -95,7 +96,7 @@
                                     <th>اسم الطالب</th>
                                     <th>رقم الهاتف</th>
                                     <th>رقم البطاقة</th>
-                                    <th>تاريخ الاشتراك</th>
+                                    <th>تاريخ انتهاء الاشتراك</th>
                                     <th>نوع الاشتراك</th>
                                     <th>حالة الاشتراك</th>
                                 </tr>
@@ -106,7 +107,7 @@
                                     <th><?php echo e($ticket->student_name); ?></th>
                                     <th><?php echo e($ticket->student_phone); ?></th>
                                     <th><?php echo e($ticket->id); ?></th>
-                                    <th><?php echo e($ticket->created_at); ?></th>
+                                    <th><?php echo e($ticket->exipred_at ?$ticket->exipred_at : 'منتهي'); ?></th>
                                     <th><?php echo e($ticket->plan->plan_name); ?></th>
                                     <th><a href="<?php echo e(route('ticket.stauts',$ticket->id)); ?>"><?php echo e($ticket->stauts); ?></a></th>
 
@@ -124,6 +125,28 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
+        $.ajax({
+            type: 'get',
+            url: "<?php echo e(route('search')); ?>",
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
+    })
+</script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'csrftoken': '<?php echo e(csrf_token()); ?>'
+        }
+    });
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\core_top\resources\views/tickets/create_ticket.blade.php ENDPATH**/ ?>

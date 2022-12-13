@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('title', 'Ticket Stauts')
 @section('content')
 
 <div class="container-fluid">
@@ -24,7 +25,7 @@
             </p>
             <b>الحالة</b>
             @if($ticket->stauts ===0)
-            <a href="{{route('ticket.approved',$ticket->id)}}" class="btn btn-primary">تفعيل</a>
+            <a href="{{route('ticket.checkout',$ticket->id)}}" class="btn btn-primary">تفعيل</a>
             @else
             مفعل
             @endif

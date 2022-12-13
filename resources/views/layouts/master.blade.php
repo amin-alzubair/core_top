@@ -83,7 +83,7 @@
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> الاشتراكات </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('ticket.create')}}"><i class="icon-plus"></i> اشتراك جديد</a>
+                            <a class="nav-link" href="{{route('ticket.create')}}"><i class="icon-plus"></i>عرض الاشتراكات</a>
                         </li>
                     </ul>
                 </li>
@@ -92,7 +92,7 @@
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> المنصرافات </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('expense.create')}}"><i class="icon-plus"></i>اضافة منصرف</a>
+                            <a class="nav-link" href="{{route('expense.create')}}"><i class="icon-plus"></i>عرض المنصرافات</a>
                         </li>
                     </ul>
                 </li>
@@ -104,7 +104,16 @@
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> الموظفين </a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('employee.create')}}"><i class="icon-plus"></i> اضافة موظفة جديد</a>
+                            <a class="nav-link" href="{{route('employee.create')}}"><i class="icon-plus"></i>قائمة الموظفين</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> الخطط </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('plans.index')}}"><i class="icon-plus"></i>عرض الخطط</a>
                         </li>
                     </ul>
                 </li>

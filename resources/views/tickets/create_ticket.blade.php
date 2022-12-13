@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('title','Ticket List')
 @section('content')
 
 <div class="container-fluid">
@@ -97,7 +98,7 @@
                                     <th>اسم الطالب</th>
                                     <th>رقم الهاتف</th>
                                     <th>رقم البطاقة</th>
-                                    <th>تاريخ الاشتراك</th>
+                                    <th>تاريخ انتهاء الاشتراك</th>
                                     <th>نوع الاشتراك</th>
                                     <th>حالة الاشتراك</th>
                                 </tr>
@@ -108,7 +109,7 @@
                                     <th>{{$ticket->student_name}}</th>
                                     <th>{{$ticket->student_phone}}</th>
                                     <th>{{$ticket->id}}</th>
-                                    <th>{{$ticket->created_at}}</th>
+                                    <th>{{$ticket->exipred_at ?$ticket->exipred_at : 'منتهي' }}</th>
                                     <th>{{$ticket->plan->plan_name}}</th>
                                     <th><a href="{{route('ticket.stauts',$ticket->id)}}">{{$ticket->stauts}}</a></th>
 

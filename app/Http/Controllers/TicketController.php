@@ -70,7 +70,7 @@ class TicketController extends Controller
             'plan_id' => request('plan')
         ]);
 
-        return back();
+        return redirect(route('ticket.create'))->with('toast_success', 'تم تفعيل الحساب');
     }
 
     public function search(Request $request)
